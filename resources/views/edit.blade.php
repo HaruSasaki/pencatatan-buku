@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('container')
 
-<div class="col-lg-4">
+<div class="col-lg-8">
   <div class="row">
     <div class="card bg-light mb-3"><br>
       <div class="d-flex justify-content-start">
