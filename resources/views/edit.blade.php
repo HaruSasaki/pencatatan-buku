@@ -10,7 +10,7 @@
       <div class="card-header" align="center">
       <h4>Edit Book</h4>
       </div>
-      <form action="{{ url('add', $book->id) }}" method="POST">
+      <form action="{{ url('edit', $book->id) }}" method="POST">
           @csrf
           @method('PUT')
           <table class="table table-responsive">
