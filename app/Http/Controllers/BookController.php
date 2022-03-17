@@ -36,9 +36,23 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['title'=>'required', 'author'=>'required', 'publisher'=>'required', 'synopsis'=>'required',]);
-        $input = $request->all();
-        $book = Book::create($input);
+        $request->validate([
+            'title'=>'required',
+            'author'=>'required',
+            'publisher'=>'required',
+            'synopsis'=>'required',
+            'filename'=>'required',
+            'filename.*'=> 'image|mimes:jpeg,png,jpg|max:2048']);
+
+        $imageName = time().'.'.$request->filename->extension();
+        $request->filename->move(public_path().'/image/', $imageName);
+        $book = Book::create([
+            'title'=>$request['title'],
+            'author'=>$request['author'],
+            'publisher'=>$request['publisher'],
+            'synopsis'=>$request['synopsis'],
+            'filename'=>$imageName]);
+
         return back()->with('success', 'Book has been added.');
     }
 
@@ -76,8 +90,22 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate(['title'=>'required', 'author'=>'required', 'publisher'=>'required', 'synopsis'=>'required',]);
-        $book = Book::find($id)->update($request->all());
+        $request->validate([
+            'title'=>'required',
+            'author'=>'required',
+            'publisher'=>'required',
+            'synopsis'=>'required',
+            'filename'=>'required',
+            'filename.*'=> 'image|mimes:jpeg,png,jpg|max:2048']);
+        $imageName = time().'.'.$request->filename->extension();
+        $request->filename->move(public_path().'/image/', $imageName);
+
+        $book = Book::find($id)->update([
+            'title'=>$request['title'],
+            'author'=>$request['author'],
+            'publisher'=>$request['publisher'],
+            'synopsis'=>$request['synopsis'],
+            'filename'=>$imageName]);
         return redirect('list')->with('success', 'Book has been updated.');
     }
 
