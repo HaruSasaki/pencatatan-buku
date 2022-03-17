@@ -16,13 +16,9 @@
                     <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
                     </form></td>
                 </table>
-                <div class="d-flex justify-content-start">
-                </div>
-                <div class="d-flex justify-content-end">
-                </div>
             </div>
             <div class="card-header">
-            <p><i class="fa-solid fa-book"></i> Book Detail</p>
+            <i class="fa-solid fa-book"></i> Book Detail
             </div>
             <div class="card-body">
               <h6 class="card-title">Title</h6>
