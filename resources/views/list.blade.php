@@ -11,7 +11,9 @@
             <div class="card-body">
               <h5 class="card-title">{{ $book->title }}</h5>
               <p class="card-text">{{ $book->synopsis }}</p>
+              <div class="d-flex justify-content-end">
               <a href="detail/{{ $book->id }}" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i> View Detail</a>
+              </div>
             </div>
         </div>
         @endforeach
